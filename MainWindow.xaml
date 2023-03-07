@@ -1,0 +1,66 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaListBoxBug.MainWindow"
+		xmlns:models="clr-namespace:AvaloniaListBoxBug.Models;assembly=AvaloniaListBoxBug"
+        Title="AvaloniaBug1">
+
+
+	<Grid RowDefinitions="Auto,10,*">
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+			<ToggleButton Content="Even" IsChecked="{Binding ShowEven}"/>
+			<TextBox
+				Name="search"
+				Classes="clearButton"
+				Text="{Binding SearchFilter}"/>
+		</StackPanel>
+		
+
+		<ListBox
+			Grid.Row="2"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+			Items="{Binding FilteredItems}">
+			
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel Orientation="Vertical"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			
+			<ListBox.DataTemplates>
+				<DataTemplate DataType="{x:Type models:UnEvenItem}">
+					<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock
+							Foreground="Red"
+							FontSize="12"
+							Text="{Binding Name}" />
+						<TextBlock
+							Margin="10 0 0 0"
+							Foreground="Red"
+							FontSize="14"
+							FontWeight="Bold"
+							Text="{Binding Id}" />
+					</StackPanel>
+				</DataTemplate>
+				
+				<DataTemplate DataType="{x:Type models:EvenItem}">
+					<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+						<TextBlock
+							Foreground="Blue"
+							FontSize="14"
+							Text="{Binding Name}" />
+						<TextBlock
+							Margin="10 0 0 0"
+							Foreground="Blue"
+							FontSize="14"
+							FontWeight="Bold"
+							Text="{Binding Id}" />
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.DataTemplates>			
+			
+		</ListBox>
+	</Grid>
+</Window>
