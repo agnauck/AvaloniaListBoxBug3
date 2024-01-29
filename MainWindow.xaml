@@ -11,12 +11,15 @@
 
 	<Grid RowDefinitions="Auto,*">
 		<StackPanel Orientation="Horizontal">
-			<Button Content="ScrollToEnd" Click="BtnScrollToEnd_Click"/>
+			<Button Content="Scroll to end" Click="BtnScrollToEnd_Click"/>
+			<Button Content="Add Top" Click="AddTop_OnClick"/>
+			<Button Content="Add End" Click="AddEnd_OnClick"/>
 		</StackPanel>
 		<ListBox
 			Name="MessageList"
 			ScrollViewer.VerticalScrollBarVisibility="Auto"
 			ItemsSource="{Binding Items}"
+			
 			Grid.Row="1">
 			
 			<ListBox.ItemsPanel>
