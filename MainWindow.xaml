@@ -6,13 +6,16 @@
         Width="800" Height="600"
         x:Class="AvaloniaListBoxBug.MainWindow"
 		xmlns:models="clr-namespace:AvaloniaListBoxBug.Models;assembly=AvaloniaListBoxBug"
-        Title="AvaloniaBug1">
+		xmlns:behaviors="clr-namespace:AvaloniaListBoxBug.Behaviors"
+		Title="AvaloniaBug1">
 
 
 	<Grid RowDefinitions="Auto,*">
 		<StackPanel Orientation="Horizontal">
 			<Button Content="Scroll to end" Click="BtnScrollToEnd_Click"/>
-			<Button Content="Add Top" Click="AddTop_OnClick"/>
+			<Button Content="Scroll to start" Click="BtnScrollToStart_Click"/>
+			<Button Content="Add Top 1" Click="AddTop_OnClick"/>
+			<Button Content="Add Top 2" Click="AddTop2_OnClick"/>
 			<Button Content="Add End" Click="AddEnd_OnClick"/>
 		</StackPanel>
 		<ListBox
@@ -21,10 +24,13 @@
 			ItemsSource="{Binding Items}"
 			
 			Grid.Row="1">
-			
+			<Interaction.Behaviors>
+				<behaviors:ScrollToEndBehavior />
+			</Interaction.Behaviors>
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
-					<VirtualizingStackPanel Orientation="Vertical"/>
+					<StackPanel Orientation="Vertical"/>
+					<!-- <VirtualizingStackPanel Orientation="Vertical"/> -->
 				</ItemsPanelTemplate>
 			</ListBox.ItemsPanel>
 			
