@@ -9,15 +9,10 @@
         Title="AvaloniaBug1">
 
 
-	<Grid RowDefinitions="Auto,*">
-		<StackPanel Orientation="Horizontal">
-			<Button Content="ScrollToEnd" Click="BtnScrollToEnd_Click"/>
-		</StackPanel>
+	<Grid RowDefinitions="*">
 		<ListBox
-			Name="MessageList"
 			ScrollViewer.VerticalScrollBarVisibility="Auto"
-			ItemsSource="{Binding Items}"
-			Grid.Row="1">
+			Items="{Binding Items}">
 			
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
